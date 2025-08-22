@@ -12,7 +12,7 @@ class CartController extends Controller
     {
         $products = []; // this simulates the database
         $products[121] = ['name' => 'Tv samsung', 'price' => '1000'];
-        $products[11]  = ['name' => 'Iphone', 'price' => '2000'];
+        $products[11] = ['name' => 'Iphone', 'price' => '2000'];
 
         $cartProducts = [];
 
@@ -28,9 +28,9 @@ class CartController extends Controller
         }
 
         $viewData = [];
-        $viewData['title']        = 'Cart - Online Store';
-        $viewData['subtitle']     = 'Shopping Cart';
-        $viewData['products']     = $products;
+        $viewData['title'] = 'Cart - Online Store';
+        $viewData['subtitle'] = 'Shopping Cart';
+        $viewData['products'] = $products;
         $viewData['cartProducts'] = $cartProducts;
 
         return view('cart.index')->with('viewData', $viewData);
@@ -38,8 +38,8 @@ class CartController extends Controller
 
     public function add(string $id, Request $request): RedirectResponse
     {
-        $cartProductData       = $request->session()->get('cart_product_data', []);
-        $cartProductData[$id]  = $id;
+        $cartProductData = $request->session()->get('cart_product_data', []);
+        $cartProductData[$id] = $id;
 
         $request->session()->put('cart_product_data', $cartProductData);
 
